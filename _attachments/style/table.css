@@ -1,0 +1,179 @@
+table {
+  border-width: 1px 1px 1px 1px;
+  border-spacing: 0;
+  border-style: solid;
+}
+
+table th, td {
+  border-width: 1px 1px 1px 1px;
+  border-style: solid;
+  margin: 0;
+  padding: 1px;
+  text-align: center;
+}
+
+td.Veteran,
+tr.Veteran {
+  background-color:#ccf;
+}
+td.Guardian,
+tr.Guardian {
+  background-color:#fcc;
+}
+tr.Veteran:hover,
+tr.Guardian:hover,
+tr.Volunteer:hover,
+tr.DataRow td:hover {
+  background-color: #9c9;
+}
+
+tr.invalid_row {
+  color: #f00;
+}
+
+tr.Separator {
+  background-color: #ffa;
+}
+
+table.MixedList a {
+  display:block;
+}
+table.MixedList a:link {
+  color:#000000;
+  text-decoration: none;
+}
+table.MixedList a:visited {
+  color:#000000;
+  text-decoration: none;
+}
+table.MixedList a:hover {
+  color:#000000;
+  text-decoration: none;
+}
+table.MixedList a:active {
+  color:#0000FF;
+  text-decoration: none;
+}
+
+table.MixedList .colName {
+  width: 250px;
+}
+
+table.MixedList .colCity {
+  width: 200px;
+}
+
+table.MixedList .colAppDate {
+  width: 100px;
+}
+
+table.MixedList .colPreferance {
+  width: 250px;
+}
+
+table.MixedList .colLongPreferance {
+  width: 350px;
+}
+
+table.MixedList .colFlight {
+  width: 150px;
+}
+
+table.MixedList .colGroup {
+  width: 80px;
+}
+
+table.MixedList .colStatus {
+  width: 100px;
+}
+
+table.MixedList .colPairing {
+  width: 250px;
+}
+
+table.MixedList .colSpacer {
+  width: 25px;
+}
+
+table.Pairs .colName {
+  width: 150px;
+}
+
+table.Pairs .colCity {
+  width: 150px;
+}
+
+table.Pairs .colLimitations {
+  width: 100px;
+}
+
+table.Pairs .colBus {
+  width: 50px;
+}
+
+table.Pairs .colSeat {
+  width: 45px;
+}
+
+table.Pairs .unconfirmed {
+  background-color:#f00;
+}
+
+table.pairing {
+  border-spacing:0px 10px;
+}
+
+table.MixedList .pairing {
+  padding: 3px;
+  border-width: 2px;
+  border-style: solid;
+  border-spacing:0px 10px;
+  background-color:#fa3;
+}
+
+table.MixedList td.confirmed {
+  background-color:#0f0;
+}
+
+table.MixedList .problem {
+  background-color:#f00;
+}
+
+table.addPeople {
+  border-width: 0;
+  border-spacing: 0;
+  border-style: none;
+}
+
+table.addPeople td {
+  border-width: 0;
+  border-style: none;
+  margin: 0;
+  padding: 1px;
+  text-align: left;
+}
+
+table.searchControls .searchLastName{
+  width: 308px;
+}
+
+table.searchControls .searchFirstName{
+  width: 250px;
+}
+
+table.searchControls .searchCity{
+  width: 250px;
+}
+
+table.searchControls .searchPhone{
+  width: 250px;
+}
+
+table.headerControls {
+  border-style: none;
+}
+
+table.headerControls td {
+  border-style: none;
+  width: 356px;
+}
