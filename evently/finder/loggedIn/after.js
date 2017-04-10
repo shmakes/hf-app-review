@@ -1,8 +1,5 @@
 function() {
-  $('#status').change(function() {
-    $('#last_name').trigger('keyup');
-  });
-  $('#status').val('New');
+  $('#refreshData').trigger('click');
   $(this).show();
 };
 
