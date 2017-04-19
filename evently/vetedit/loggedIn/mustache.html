@@ -72,14 +72,14 @@
       <option {{selGender-F}}>Female</option>
     </select>
   </span>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-   <span class="c16">
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
      {{ageFromBirthDate}}
-    </span>
-   <span class="c17">
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
      YYYY &nbsp;&nbsp; - MM &nbsp;&nbsp; - DD
-    </span>
   </p>
 
   <br /><hr /><br />
@@ -175,11 +175,26 @@
   </p>
   <br />
 
-    <fieldset>
+    <fieldset class="alt">
       <legend accesskey="O">
-        <span>Other</span>
+        <span>Disposition</span>
       </legend>
       <ol>
+        <li>
+          <label for="app_status">status</label>
+          <select name="app_status" id="app_status" >
+            <option {{selStatus-New}}>New</option>
+            <option {{selStatus-Fix}}>Fix</option>
+            <option {{selStatus-Hold}}>Hold</option>
+            <option {{selStatus-Accepted}}>Accepted</option>
+            <option {{selStatus-Rejected}}>Rejected</option>
+          </select>
+          <button id="showAppHistory" type="button">History</button>
+        </li>
+        <li>
+          <label for="app_status_note">status note</label>
+          <textarea rows="3" cols="70" name="app_status_note">{{app_status_note}}</textarea>
+        </li>
         <li>
           <label for="created_by">created by</label>
           <input type="text" name="created_by" readonly="readonly" value="{{created_by}}" style="width: 15em" />
