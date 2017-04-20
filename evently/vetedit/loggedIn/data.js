@@ -36,6 +36,8 @@ function(r) {
         app_date:              appDate.toISOString().substring(0, 10),
         app_date_string:       r.date_time,
         guardian_pref_notes:   r["Guardian-Preference"],
+        guardian_pref_phone:   r["Preferred-Guardian-Phone-Number"],
+        guardian_pref_email:   r["Preferred-Guardian-Email"],
         first_name:            r["First-Name"],
         middle_name:           r["Middle-Name"],
         last_name:             r["Last-Name"],
@@ -56,12 +58,10 @@ function(r) {
         service_branch:        r["Branch-of-Service"],
         service_dates:         r["Service-Dates"],
         service_rank:          r.Rank,
-        ec_name:               r["Emergency-Contact-Name"],
-        ec_addr_phone:         r["Emergency-Contact-Phone"],
         ac_name:               r["Emergency-Contact-Name"],
         ac_addr_phone:         r["Emergency-Contact-Phone"],
         ac_addr_email:         r["Emergency-Contact-Email"],
-        created_at:            (r.metadata.created_at || appDate.toISOString()),
+        created_at:            (r.metadata.created_at || appDate.toISOString().substring(0,19) + "Z"),
         updated_at:            (r.metadata.updated_at || ""),
         created_by:            (r.metadata.created_by || "Online App"),
         updated_by:            (r.metadata.updated_by || "")
@@ -72,7 +72,7 @@ function(r) {
     result[selectedBranch] = "selected";
     var selectedVetType = "selVetType-" + (r.Conflict || "WWII");
     result[selectedVetType] = "selected";
-    var selectedGender = "selGender-" + (r.Gender || "M");
+    var selectedGender = "selGender-" + (r.Gender.substring(0, 1) || "M");
     result[selectedGender] = "selected";
 
     if (r["medical-wheelchair"] === "Yes") {

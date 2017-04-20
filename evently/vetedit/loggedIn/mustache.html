@@ -1,4 +1,4 @@
-<div>
+<div class="vetApplication">
   <form id="form-Vet" novalidate>
 
   <br />
@@ -45,7 +45,7 @@
    <button id="zipFill" type="button">auto fill</button>   </span></p>
   <br />
 
-  <p class="P15"><span class="T8">PHONE</span><span class="T1">:</span> &nbsp;Day:
+  <p class="P15"><span class="T8">PHONE</span><span class="T1">:</span> &nbsp; Day:
   <input type="text" name="phone_day" pattern="[0-9 -]{12,}" maxlength="20" value="{{addr_phone_day}}" style="width: 10em" required="required" />
   </span><span class="c5">Cell Phone:
   <input type="text" name="phone_mbl" pattern="[0-9 -]{0,}" maxlength="20" value="{{addr_phone_mbl}}" style="width: 10em" />
@@ -84,35 +84,15 @@
 
   <br /><hr /><br />
 
-  <p class="P22"><span class="T9">PRIMARY EMERGENCY CONTACT INFORMATION</span>
-  <span class="T13">(someone available the day you travel)</span><span class=
-  "T10">:</span>
-    <button id="copyEContact_Address" type="button">copy vet addr</button>
-  </p>
-
-  <p class="P16">Name:
-    <input type="text" name="ec_name" pattern="[a-zA-Z'. ]{0,}" maxlength="30" value="{{ec_name}}" style="width: 25em" />
-  </p>
-
-  <p class="P17"><span class="T8">PHONE</span><span class="T1">:</span> &nbsp;
-    Primary:
-    <input type="text" name="ec_phone" pattern="[0-9 -]{0,}" maxlength="20" value="{{ec_addr_phone}}" style="width: 10em" />
-  </p>
-
-  <br /><hr /><br />
-
   <p class="P22"><span class="T9">ALTERNATE EMERGENCY CONTACT</span>
-    <span class="T13">(son, daughter, etc)</span><span class="T10">:</span>
-    <button id="copyAContact_VAddress" type="button">copy vet addr</button>
-    <button id="copyAContact_EAddress" type="button">copy e-contact</button>
+    <span class="T13"></span><span class="T10">:</span>
   </p>
 
-  <p class="P18">Name:
+  <p class="P18"><span class="T8">NAME</span><span class="T1">:</span> &nbsp;
     <input type="text" name="ac_name" pattern="[a-zA-Z'. ]{0,}" maxlength="30" value="{{ac_name}}" style="width: 25em" />
   </p>
 
   <p class="P17"><span class="T8">PHONE</span><span class="T1">:</span> &nbsp;
-    Day:
     <input type="text" name="ac_phone" pattern="[0-9 -]{0,}" maxlength="20" value="{{ac_addr_phone}}" style="width: 10em" />
   </p>
   <p class="P21"><span class="T9">E-MAIL ADDRESS</span><span class="T10">:</span>
@@ -176,6 +156,28 @@
   <br />
 
     <fieldset class="alt">
+      <legend accesskey="G">
+        <span>Guardian</span>
+      </legend>
+      <ol>
+        <input type="hidden" name="_id" value="{{id}}" />
+        <input type="hidden" name="_rev" value="{{rev}}" />
+        <input type="hidden" name="type" value="{{type}}" />
+        <li>
+          <label for="guardian_pref_notes">name</label>
+          <input type="text" name="guardian_pref_notes" pattern="[a-zA-Z0-9.,# /-]{0,}" value="{{guardian_pref_notes}}" style="width: 25em" />
+        </li>
+        <li>
+          <label for="guardian_pref_phone">phone</label>
+          <input type="text" name="guardian_pref_phone" pattern="[0-9 -]{0,}" maxlength="20" value="{{guardian_pref_phone}}" style="width: 25em" />
+        </li>
+        <li>
+          <label for="guardian_pref_email">email</label>
+          <input type="email" name="guardian_pref_email" value="{{guardian_pref_email}}" style="width: 25em" />
+        </li>
+      </ol>
+    </fieldset>
+    <fieldset>
       <legend accesskey="O">
         <span>Disposition</span>
       </legend>
