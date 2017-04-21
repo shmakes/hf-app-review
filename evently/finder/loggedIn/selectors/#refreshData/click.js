@@ -6,6 +6,11 @@ function() {
   var endKey = [];
   var viewName = "hf-app-review/new_apps";
 
+  startKey.push(sts);
+  startKey.push("0");
+  endKey.push(sts);
+  endKey.push("9");
+
   // Clear the result area.
   var rslt = $("#results");
   rslt.html("");
@@ -14,8 +19,8 @@ function() {
   var app = $$(this).app;
   app.db.view(viewName, {
     limit : cnt,
-    //startkey : startKey,
-    //endkey : endKey,
+    startkey : startKey,
+    endkey : endKey,
     descending : false,
     type : "newRows",
     success: function(resp) {
@@ -35,6 +40,7 @@ function() {
         tr.append("<td>" + anchor + person.name + "</a></td>");
         tr.append("<td>" + anchor + person.city + "</a></td>");
         tr.append("<td>" + anchor + person.appdate.substring(0, 10) + "</a></td>");
+        tr.append("<td>" + anchor + person.app_status + "</a></td>");
         tr.append("<td>" + anchor + person.pairing + "</a></td>");
         tr.append("<td>" + anchor + person.email + "</a></td>");
         tr.append("<td>" + anchor + person.ipaddr + "</a></td>");

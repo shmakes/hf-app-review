@@ -5,10 +5,12 @@ function(doc) {
         || (doc.type == "GuardianApp"))
       && ((doc.disposition === undefined)
         || (doc.disposition == "Edited"))) {
-    var appdate = new Date(Date.parse(doc.date_time)).toISOString();
-    emit([appdate, doc.type], {
+    var appStatus = doc.app_status || "New";
+    var appDate = new Date(Date.parse(doc.date_time)).toISOString();
+    emit([appStatus, appDate], {
       "type": doc.type,
-      "appdate": appdate,
+      "appdate": appDate,
+      "app_status": appStatus,
       "name": doc["First-Name"] + " " + doc["Last-Name"],
       "city": doc.City + " " + doc.State,
       "pairing": doc["Guardian-Preference"] || doc["Veteran-Preference"] || "",
