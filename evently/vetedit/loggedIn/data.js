@@ -61,6 +61,8 @@ function(r) {
         ac_name:               r["Emergency-Contact-Name"],
         ac_addr_phone:         r["Emergency-Contact-Phone"],
         ac_addr_email:         r["Emergency-Contact-Email"],
+        app_status:            (r.app_status || "New"),
+        app_status_note:       (r.app_status_note || ""),
         created_at:            (r.metadata.created_at || appDate.toISOString().substring(0,19) + "Z"),
         updated_at:            (r.metadata.updated_at || ""),
         created_by:            (r.metadata.created_by || "Online App"),
@@ -74,6 +76,8 @@ function(r) {
     result[selectedVetType] = "selected";
     var selectedGender = "selGender-" + (r.Gender.substring(0, 1) || "M");
     result[selectedGender] = "selected";
+    var selectedAppStatus = "selStatus-" + (r.app_status || "New");
+    result[selectedAppStatus] = "selected";
 
     if (r["medical-wheelchair"] === "Yes") {
       result["selMed-wc"] = "checked='yes'";

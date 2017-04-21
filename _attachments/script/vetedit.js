@@ -3,13 +3,17 @@ $.couch.app(function(app) {
   $.evently.connect($("#account"), $("#vetedit"), ["loggedIn", "loggedOut"]);
 });
 
-function acceptVetApp(f) {
+function acceptVetApp(app, f) {
+
+  logisticsDb = jQuery.extend({}, app.db);
+  logisticsDb.uri = "/test/";
+
 
   function saveDoc(doc) {
     var user = $("#user_name").text();
     var timestamp = ISODateString(new Date());
 
-    doc.type = f.type;
+    doc.type = "Veteran";
 
     if (!doc.name) {
       doc.name = {};
@@ -193,6 +197,15 @@ function acceptVetApp(f) {
       doc.medical.review = "";
     }
 
+    if (!doc.shirt) {
+      doc.shirt = {};
+      doc.shirt.size = "";
+    }
+
+    if (!doc.weight) {
+      doc.weight = "";
+    }
+
     if (!doc.apparel) {
       doc.apparel = {};
       doc.apparel.item = "None";
@@ -204,35 +217,30 @@ function acceptVetApp(f) {
 
     if (!doc.metadata) {
       doc.metadata = {};
-      doc.metadata.created_at = f.metadata.created_at;
-      doc.metadata.created_by = f.metadata.created_by;
+      doc.metadata.created_at = f.created_at;
+      doc.metadata.created_by = f.created_by;
     }
     doc.metadata.updated_at = timestamp;
     doc.metadata.updated_by = user;
 
 
-    app.db.saveDoc(doc, {
+    logisticsDb.saveDoc(doc, {
       success : function(resp) {
-        $("input[name='_id']").val(resp.id);
-        $("input[name='_rev']").val(resp.rev);
-        // Pop-up the save confirmation.
-        $("#saved_trigger").click();
-        $("#continue_edit").focus();            
+        $("#SavedToWaitlist").html("Application Saved to Waitlist");
       }
     });
     return false;
   };
 
   if (f._rev) {
-    app.db.openDoc(f._id, {
+    logisticsDb.openDoc(f._id, {
+      error : function() {
+        saveDoc( { "_id" : f._id } );
+      },
       success : function(doc) {
-        doc._rev = f._rev;
         saveDoc(doc);
       }
     });
-  } else {
-    // create a new page
-    saveDoc({});
   }
   return false;
 };

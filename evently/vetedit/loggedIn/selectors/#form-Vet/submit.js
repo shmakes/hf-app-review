@@ -158,6 +158,16 @@ function(context) {
         hasChanged = true;
       }
 
+      if (doc.app_status != f.app_status) {
+        doc.app_status = f.app_status;
+        hasChanged = true;
+      }
+
+      if (doc.app_status_note != f.app_status_note) {
+        doc.app_status_note = f.app_status_note;
+        hasChanged = true;
+      }
+
       if (!doc.metadata) {
         doc.metadata = {};
         doc.metadata.created_at = f.created_at;
@@ -175,6 +185,11 @@ function(context) {
             // Pop-up the save confirmation.
             $("#saved_trigger").click();
             $("#continue_edit").focus();            
+            // Set indicator for saved to logistics database.
+            $("#SavedToWaitlist").html("");
+            if (f.app_status === "Accepted") {
+              acceptVetApp(app, f);
+            }
           }
         });
       } else {
