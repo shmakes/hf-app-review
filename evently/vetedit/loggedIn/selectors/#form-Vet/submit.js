@@ -178,20 +178,14 @@ function(context) {
 
 
       if (hasChanged) {
-        app.db.saveDoc(doc, {
-          success : function(resp) {
-            $("input[name='_id']").val(resp.id);
-            $("input[name='_rev']").val(resp.rev);
-            // Pop-up the save confirmation.
-            $("#saved_trigger").click();
-            $("#continue_edit").focus();            
-            // Set indicator for saved to logistics database.
-            $("#SavedToWaitlist").html("");
-            if (f.app_status === "Accepted") {
-              acceptVetApp(app, f);
-            }
-          }
-        });
+        // Set indicator for saved to logistics database.
+        $("#SavedToWaitlist").html("");
+        if (f.app_status === "Accepted") {
+          acceptVetApp(app, f, saveVetApplication, doc);
+        } else {
+          saveVetApplication(app, doc);
+        }
+
       } else {
         alert("No information changed since last save.");
         return false;
@@ -211,4 +205,15 @@ function(context) {
   return true;
 };
 
+function saveVetApplication(app, doc) {
+  app.db.saveDoc(doc, {
+    success : function(resp) {
+      $("input[name='_id']").val(resp.id);
+      $("input[name='_rev']").val(resp.rev);
+      // Pop-up the save confirmation.
+      $("#saved_trigger").click();
+      $("#continue_edit").focus();            
+    }
+  });
+}
 //@ sourceURL=/vetedit/submit.js

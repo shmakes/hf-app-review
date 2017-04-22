@@ -23,6 +23,21 @@ function ISODateString(d){
       + pad(d.getUTCSeconds())+'Z'
 }
 
+function getLogisticsDb(app) {
+  logisticsDb = jQuery.extend({}, app.db);
+  switch (logisticsDb.uri) {
+    case "/apptest/":
+      logisticsDb.uri = "/test/";
+      break;
+    case "/hf/":
+      logisticsDb.uri = "/hf_app/";
+      break;
+    default:
+      logisticsDb.uri = "";
+  }
+  return logisticsDb;
+}
+
 function closeW() {
   window.opener = self;
   window.close();

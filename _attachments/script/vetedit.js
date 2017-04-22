@@ -3,11 +3,9 @@ $.couch.app(function(app) {
   $.evently.connect($("#account"), $("#vetedit"), ["loggedIn", "loggedOut"]);
 });
 
-function acceptVetApp(app, f) {
+function acceptVetApp(app, f, saveVetApplication, vetAppDoc) {
 
-  logisticsDb = jQuery.extend({}, app.db);
-  logisticsDb.uri = "/test/";
-
+  var logisticsDb = getLogisticsDb(app);
 
   function saveDoc(doc) {
     var user = $("#user_name").text();
@@ -227,6 +225,8 @@ function acceptVetApp(app, f) {
     logisticsDb.saveDoc(doc, {
       success : function(resp) {
         $("#SavedToWaitlist").html("Application Saved to Waitlist");
+        vetAppDoc["acceptedAsRev"] = resp.rev;
+        saveVetApplication(app, vetAppDoc);
       }
     });
     return false;
@@ -238,7 +238,12 @@ function acceptVetApp(app, f) {
         saveDoc( { "_id" : f._id } );
       },
       success : function(doc) {
-        saveDoc(doc);
+        if (doc._rev === vetAppDoc.acceptedAsRev) {
+          saveDoc(doc);
+        } else {
+          $("#SavedToWaitlist").html("Could not save to waitlist. Already modified there.");
+          saveVetApplication(app, vetAppDoc);
+        }
       }
     });
   }
