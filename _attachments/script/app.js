@@ -29,11 +29,11 @@ function getLogisticsDb(app) {
     case "/apptest/":
       logisticsDb.uri = "/test/";
       break;
-    case "/hf/":
-      logisticsDb.uri = "/hf_app/";
+    case "/hf_apps/":
+      logisticsDb.uri = "/hf/";
       break;
     default:
-      logisticsDb.uri = "";
+      logisticsDb.uri = "/not_a_db/";
   }
   return logisticsDb;
 }
