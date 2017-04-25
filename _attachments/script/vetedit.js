@@ -154,14 +154,8 @@ function acceptVetApp(app, f, saveVetApplication, vetAppDoc) {
     if (!doc.emerg_contact) {
       doc.emerg_contact = {};
     }
-    if (doc.emerg_contact.name != f.ec_name) {
-      doc.emerg_contact.name = f.ec_name;
-    }
     if (!doc.emerg_contact.address) {
       doc.emerg_contact.address = {};
-    }
-    if (doc.emerg_contact.address.phone != f.ec_phone) {
-      doc.emerg_contact.address.phone = f.ec_phone;
     }
 
     if (!doc.alt_contact) {

@@ -67,8 +67,7 @@
     <br />
     <span class="P21">
      <span class="c16">
-       {{ageFromBirthDate}}
-      </span>
+       {{ageFromBirthDate}veteran</span>
      <span class="c17">
        YYYY &nbsp;&nbsp; - MM &nbsp;&nbsp; - DD
       </span>
@@ -95,13 +94,7 @@
     <input type="email" name="ec_email" value="{{ec_addr_email}}" style="width: 17em" />
     &nbsp;</span>
   </p>
-    
     </span></span></span></p>
-    <p class="P10">4.
-      <span>&nbsp;What is the name of the veteran you will be traveling with?:<br />
-        &nbsp;<input type="text" name="veteran_pref_notes" pattern="[a-zA-Z0-9.,()# /-]{0,}" value="{{veteran_pref_notes}}" style="width: 45em" />
-      </span>
-    </p>
   <br />
   <p class="P10">8.<span>&nbsp;GENDER</span>
   <span class="T10">:</span>
@@ -115,20 +108,33 @@
   <br />
 
     <fieldset class="alt">
+      <legend accesskey="G">
+        <span>Veteran</span>
+      </legend>
+      <ol>
+        <input type="hidden" name="_id" value="{{id}}" />
+        <input type="hidden" name="_rev" value="{{rev}}" />
+        <input type="hidden" name="type" value="{{type}}" />
+        <li>
+          <label for="veteran_pref_notes">name</label>
+          <input type="text" name="veteran_pref_notes" pattern="[a-zA-Z0-9.,# /-]{0,}" value="{{veteran_pref_notes}}" style="width: 25em" />
+        </li>
+      </ol>
+    </fieldset>
+    <fieldset>
       <legend accesskey="O">
-        <span>Other</span>
+        <span>Disposition</span>
       </legend>
       <ol>
         <li>
           <label for="app_status">status</label>
           <select name="app_status" id="app_status" >
             <option {{selStatus-New}}>New</option>
-            <option {{selStatus-Fix}}>Fix</option>
             <option {{selStatus-Hold}}>Hold</option>
             <option {{selStatus-Accepted}}>Accepted</option>
             <option {{selStatus-Rejected}}>Rejected</option>
+            <option {{selStatus-Trash}}>Trash</option>
           </select>
-          <button id="showAppHistory" type="button">History</button>
         </li>
         <li>
           <label for="app_status_note">status note</label>
@@ -162,7 +168,35 @@
   <div id="saved_trigger" rel="#saved"></div>
   <div class="modal saved" id="saved">
     <h2 id="Saved">Saved Sucessfully</h2>
+    <br />
+    <h3 id="SavedToWaitlist"></h3>
+    <br />
     <button id="continue_edit" type="button" class="close"> Continue Editing </button> |
     <button type="button" onClick="javascript: closeW()"> Close </button>
   </div>
+
+  <div id="existing_trigger" rel="#existing"></div>
+  <div class="modal saved" id="existing">
+    <h3 id="DupeCheckName">Possible Duplicates for </h3>
+    <br />
+    <div class="result_list">
+      <table class='MixedList'>
+        <thead>
+          <tr>
+            <th class="colName">Name</th>
+            <th class="colCity">City</th>
+            <th class="colAppDate">App. Date</th>
+            <th class="colFlight">Flight</th>
+            <th class="colStatus">Status</th>
+            <th class="colPairing">Pairing</th>
+          </tr>
+        </thead>
+        <tbody id="dups">
+        </tbody>
+      </table>
+    </div>
+    <br />
+    <button id="close_dups" type="button" class="close"> Close </button>
+  </div>
 </div>
+

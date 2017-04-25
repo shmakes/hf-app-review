@@ -1,5 +1,4 @@
 function() {
-  update_status_ctrl_states();  
   var qs = window.location.search;
   if (qs === "?grdid=New") {
     window.location.search = "?grdid=" + $("input[name='_id']").val();

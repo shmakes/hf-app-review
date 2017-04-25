@@ -60,14 +60,19 @@ function(r) {
         ec_name:               r["Emergency-Contact-Name"],
         ec_addr_phone:         r["Emergency-Contact-Phone"],
         ec_addr_email:         r["Emergency-Contact-Email"],
-        created_at:            (r.metadata.created_at || appDate.toISOString()),
+        app_status:            (r.app_status || "New"),
+        app_status_note:       (r.app_status_note || ""),
+        created_at:            (r.metadata.created_at || appDate.toISOString().substring(0,19) + "Z"),
         updated_at:            (r.metadata.updated_at || ""),
         created_by:            (r.metadata.created_by || "Online App"),
         updated_by:            (r.metadata.updated_by || "")
+
     }
 
     var selectedGender = "selGender-" + (r.gender || "M");
     result[selectedGender] = "selected";
+    var selectedAppStatus = "selStatus-" + (r.app_status || "New");
+    result[selectedAppStatus] = "selected";
 
   }
 
