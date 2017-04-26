@@ -41,6 +41,7 @@ function(r) {
         first_name:            r["First-Name"],
         middle_name:           r["Middle-Name"],
         last_name:             r["Last-Name"],
+        nick_name:             r["Nickname"],
         addr_street:           r.Street,
         addr_city:             r.City,
         addr_county:           r.County,

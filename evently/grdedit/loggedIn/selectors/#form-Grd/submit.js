@@ -27,6 +27,10 @@ function(context) {
         doc["Middle-Name"] = f.middle_name;
         hasChanged = true;
       }
+      if (doc["Nickname"] != f.nick_name) {
+        doc["Nickname"] = f.nick_name;
+        hasChanged = true;
+      }
 
       if (doc.Street != f.street) {
         doc.Street = f.street;
