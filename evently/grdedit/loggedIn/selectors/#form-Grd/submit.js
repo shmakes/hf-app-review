@@ -164,6 +164,13 @@ function(context) {
 
 function saveGrdApplication(app, doc) {
   app.db.saveDoc(doc, {
+    error: function(error, reason) {
+      if (error == 403) {
+        alert("You do not have permission to change this document");
+      } else {
+        alert(reason);
+      }
+    },
     success : function(resp) {
       $("input[name='_id']").val(resp.id);
       $("input[name='_rev']").val(resp.rev);
