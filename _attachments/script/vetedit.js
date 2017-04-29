@@ -210,7 +210,8 @@ function acceptVetApp(app, f, saveVetApplication, vetAppDoc) {
     if (!doc.metadata) {
       doc.metadata = {};
       doc.metadata.created_at = f.created_at;
-      doc.metadata.created_by = f.created_by;
+      doc.metadata.created_by = f.created_by + " (" + user + ")";
+      ;
     }
     doc.metadata.updated_at = timestamp;
     doc.metadata.updated_by = user;
