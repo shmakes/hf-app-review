@@ -38,6 +38,22 @@ function() {
 
   document.title = $("input[name='first_name']").val() + " " + $("input[name='last_name']").val();
 
+  // Handle shirt size selection.
+  var storedShirtSize = $("#raw_shirt_size").attr('value').toUpperCase();
+  $("#shirt_size").val(storedShirtSize);
+
+  var validShirtSizes = [ "None", "S", "M", "L", "XL", "2XL", "3XL", "4XL", "5XL" ];
+  $("#shirt_size").validator({inputEvent: "blur"});
+  var shirtSizeErr = "Please make a selection.";
+  if ($("#raw_shirt_size").attr('value').length > 0) {
+    $("#shirt_size")
+    shirtSizeErr += " (stored value: " + $("#raw_shirt_size").attr('value') + ")";
+  }
+  $.tools.validator.fn("#shirt_size", shirtSizeErr,
+    function(input, value) {
+    return (jQuery.inArray(value, validShirtSizes) >= 0);
+  });
+
   $("#saved_trigger").overlay({
     mask: {
       color: '#ebecff',

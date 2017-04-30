@@ -55,6 +55,7 @@ function(r) {
         birth_date_string:     birthDateString,
         ageFromBirthDate:      ageFromBirthDate,
         gender:                r.Gender,
+        shirt_size:            r["Shirt-Size"],
         service_branch:        r["Branch-of-Service"],
         service_dates:         r["Service-Dates"],
         service_rank:          r.Rank,
@@ -70,6 +71,8 @@ function(r) {
 
     }
 
+    var selectedSize = "selShrt-" + r["Shirt-Size"];
+    result[selectedSize] = "selected";
     var selectedGender = "selGender-" + (r.gender || "M");
     result[selectedGender] = "selected";
     var selectedAppStatus = "selStatus-" + (r.app_status || "New");

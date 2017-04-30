@@ -25,6 +25,9 @@ function acceptGrdApp(app, f, saveGrdApplication, grdAppDoc) {
     if (doc.name.middle != f.middle_name) {
       doc.name.middle = f.middle_name;
     }
+    if (doc.name.nickname != f.nick_name) {
+      doc.name.nickname = f.nick_name;
+    }
 
     if (!doc.address) {
       doc.address = {};
@@ -154,7 +157,10 @@ function acceptGrdApp(app, f, saveGrdApplication, grdAppDoc) {
 
     if (!doc.shirt) {
       doc.shirt = {};
-      doc.shirt.size = "";
+    }
+    if (doc.shirt.size != f.shirt_size) {
+      doc.shirt.size = f.shirt_size;
+      hasChanged = true;
     }
 
     if (!doc.notes) {

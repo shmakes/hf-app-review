@@ -56,6 +56,7 @@ function(r) {
         birth_date_string:     birthDateString,
         ageFromBirthDate:      ageFromBirthDate,
         gender:                r.Gender,
+        shirt_size:            r["Shirt-Size"],
         service_branch:        r["Branch-of-Service"],
         service_dates:         r["Service-Dates"],
         service_rank:          r.Rank,
@@ -71,6 +72,8 @@ function(r) {
     }
 
 
+    var selectedSize = "selShrt-" + r["Shirt-Size"];
+    result[selectedSize] = "selected";
     var selectedBranch = "selBranch-" + r["Branch-of-Service"].split(' ').join('_');
     result[selectedBranch] = "selected";
     var selectedVetType = "selVetType-" + (r.Conflict || "WWII");

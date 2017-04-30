@@ -108,6 +108,14 @@ function(context) {
         hasChanged = true;
       }
 
+      if (!doc.shirt) {
+        doc.shirt = {};
+      }
+      if (doc["Shirt-Size"] != f.shirt_size) {
+        doc["Shirt-Size"] = f.shirt_size;
+        hasChanged = true;
+      }
+
       if (doc.Conflict != f.vet_type) {
         doc.Conflict = f.vet_type;
         hasChanged = true;

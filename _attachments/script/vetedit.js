@@ -25,6 +25,9 @@ function acceptVetApp(app, f, saveVetApplication, vetAppDoc) {
     if (doc.name.middle != f.middle_name) {
       doc.name.middle = f.middle_name;
     }
+    if (doc.name.nickname != f.nick_name) {
+      doc.name.nickname = f.nick_name;
+    }
 
     if (!doc.address) {
       doc.address = {};
@@ -189,9 +192,30 @@ function acceptVetApp(app, f, saveVetApplication, vetAppDoc) {
       doc.medical.review = "";
     }
 
+    var usesWheelchair = 0;
+    if (f.medical_uses_wheelchair) {
+      usesWheelchair = 1;
+    }
+    if (doc.medical.usesWheelchair != usesWheelchair) {
+      doc.medical.usesWheelchair = usesWheelchair;
+      hasChanged = true;
+    }
+
+    var requiresOxygen = 0;
+    if (f.medical_requires_oxygen) {
+      requiresOxygen = 1;
+    }
+    if (doc.medical.requiresOxygen != requiresOxygen) {
+      doc.medical.requiresOxygen = requiresOxygen;
+      hasChanged = true;
+    }
+
     if (!doc.shirt) {
       doc.shirt = {};
-      doc.shirt.size = "";
+    }
+    if (doc.shirt.size != f.shirt_size) {
+      doc.shirt.size = f.shirt_size;
+      hasChanged = true;
     }
 
     if (!doc.weight) {
