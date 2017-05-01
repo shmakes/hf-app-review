@@ -73,7 +73,7 @@ function(r) {
 
     var selectedSize = "selShrt-" + r["Shirt-Size"];
     result[selectedSize] = "selected";
-    var selectedGender = "selGender-" + (r.gender || "M");
+    var selectedGender = "selGender-" + (r.Gender.substring(0, 1) || "M");
     result[selectedGender] = "selected";
     var selectedAppStatus = "selStatus-" + (r.app_status || "New");
     result[selectedAppStatus] = "selected";

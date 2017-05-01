@@ -95,8 +95,8 @@ function(context) {
           }
         }
       }
-      if (doc.gender != f.gender) {
-        doc.gender = f.gender;
+      if (doc.Gender != f.gender) {
+        doc.Gender = f.gender;
         hasChanged = true;
       }
 
