@@ -49,3 +49,11 @@ function strUnique(arr) {
   for(i in o) r.push(i);
   return r;
 }
+
+function fixPhone(phone) {
+  var fixedPhone = phone.replace(/[^\d]/g, "");
+  if (fixedPhone.length == 10) {
+    return fixedPhone.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3");
+  }
+  return phone;
+}
