@@ -1,6 +1,10 @@
 function(doc) {
   if (doc.date_time) {
-    var dw = new Date(doc.date_time);
+    var dw = doc.date_time;
+    if (dw.match(/^\d/)) {
+      dw = dw.replace(" ", "T");
+    }
+    var dw = new Date(dw);
     dw.setHours(0,0,0,0);
     dw.setDate(dw.getDate() + 4 - (dw.getDay()||7));
     var yearStart = new Date(dw.getFullYear(),0,1);

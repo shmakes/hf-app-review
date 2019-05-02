@@ -6,7 +6,11 @@ function(doc) {
       && ((doc.disposition === undefined)
         || (doc.disposition == "Edited"))) {
     var appStatus = doc.app_status || "New";
-    var appDate = new Date(Date.parse(doc.date_time)).toISOString();
+    var appDate = doc.date_time;
+    if (appDate.match(/^\d/)) {
+      appDate = appDate.replace(" ", "T");
+    }
+    appDate = new Date(Date.parse(appDate)).toISOString();
     emit([appStatus, appDate], {
       "type": doc.type,
       "appdate": appDate,
