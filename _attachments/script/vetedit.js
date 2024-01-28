@@ -157,24 +157,24 @@ function acceptVetApp(app, f, saveVetApplication, vetAppDoc) {
     if (!doc.emerg_contact) {
       doc.emerg_contact = {};
     }
+    if (doc.emerg_contact.name != f.ac_name) {
+      doc.emerg_contact.name = f.ac_name;
+    }
     if (!doc.emerg_contact.address) {
       doc.emerg_contact.address = {};
+    }
+    if (doc.emerg_contact.address.phone != f.ac_phone) {
+      doc.emerg_contact.address.phone = f.ac_phone;
+    }
+    if (doc.emerg_contact.address.email != f.ac_email) {
+      doc.emerg_contact.address.email = f.ac_email;
     }
 
     if (!doc.alt_contact) {
       doc.alt_contact = {};
     }
-    if (doc.alt_contact.name != f.ac_name) {
-      doc.alt_contact.name = f.ac_name;
-    }
     if (!doc.alt_contact.address) {
       doc.alt_contact.address = {};
-    }
-    if (doc.alt_contact.address.phone != f.ac_phone) {
-      doc.alt_contact.address.phone = f.ac_phone;
-    }
-    if (doc.alt_contact.address.email != f.ac_email) {
-      doc.alt_contact.address.email = f.ac_email;
     }
     if (!doc.medical) {
       doc.medical = {};
