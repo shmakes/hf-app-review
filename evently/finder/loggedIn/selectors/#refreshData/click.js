@@ -7,9 +7,9 @@ function() {
   var viewName = "hf-app-review/new_apps";
 
   startKey.push(sts);
-  startKey.push("0");
+  startKey.push("9");
   endKey.push(sts);
-  endKey.push("9");
+  endKey.push("0");
 
   // Clear the result area.
   var rslt = $("#results");
@@ -21,7 +21,7 @@ function() {
     limit : cnt,
     startkey : startKey,
     endkey : endKey,
-    descending : false,
+    descending : true,
     type : "newRows",
     success: function(resp) {
       var id, person, anchor, tr;
