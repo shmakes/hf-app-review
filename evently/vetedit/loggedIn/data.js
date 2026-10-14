@@ -76,7 +76,7 @@ function(r) {
     result[selectedSize] = "selected";
     var selectedBranch = "selBranch-" + r["Branch-of-Service"].split(' ').join('_');
     result[selectedBranch] = "selected";
-    var selectedVetType = "selVetType-" + (r.Conflict || "WWII");
+    var selectedVetType = "selVetType-" + (r.Conflict || "WWII").split(' ').join('_');
     result[selectedVetType] = "selected";
     var selectedGender = "selGender-" + (r.Gender.substring(0, 1) || "M");
     result[selectedGender] = "selected";
